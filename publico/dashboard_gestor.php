@@ -1,0 +1,27 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id']) || $_SESSION['rol'] !== 'GESTOR') {
+    header('Location: index.php');
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Gestor</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" type="image/x-icon" href="img/FDS_Favicon.png">
+</head>
+<body>
+    <div class="login-container">
+        <img src="img/FDS_Logo.webp">
+        <h2>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']) ?> (Gestor)</h2>
+        <ul>
+            <li><a href="registrar_oc.php">Registrar Orden de Compra</a></li>
+            <li><a href="estado_oc.php">Estado de mis O.C.</a></li>
+        </ul>
+        <p><a href="logout.php">Cerrar sesion</a></p>
+    </div>
+</body>
+</html>
